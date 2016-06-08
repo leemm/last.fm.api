@@ -1,0 +1,28 @@
+{
+  "name": "last.fm.api",
+  "version": "0.0.1",
+  "description": "last.fm.api with Promises and ES6 style classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "last",
+    "fm",
+    "last.fm",
+    "scrobble",
+    "scrobblr",
+    "api",
+    "rest",
+    "restful"
+  ],
+  "author": "Lee M <lee@hma.co.uk> (https://github.com/leemm/)",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "lodash": "^4.13.1",
+    "request": "^2.72.0",
+    "string-format-js": "^0.1.8"
+  },
+  "repository": "https://github.com/leemm/last.fm.api.git"
+}
