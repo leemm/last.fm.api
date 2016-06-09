@@ -11,6 +11,17 @@ class Auth {
     }
 
     /**
+     * Convenience method for getting last.fm auth url
+     * @param  {String} returnUrl (optional, default to http://localhost:8085/authenticated if not supplied)
+     * @return {String}
+     */
+    webAuthUrl(returnUrl) {
+        returnUrl = returnUrl || 'http://localhost:8085/authenticated';
+
+        return 'http://www.last.fm/api/auth/?api_key=' + this.opts.options.apiKey + '&cb=' + encodeURI(returnUrl);
+    }
+
+    /**
      * http://www.last.fm/api/show/artist.getMobileSession
      * @return {Promise}
      */

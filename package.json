@@ -25,10 +25,8 @@
     "lodash": "^4.13.1",
     "npm": "^3.9.5",
     "request": "^2.72.0",
-    "string-format-js": "^0.1.8"
-  },
-  "repository": "https://github.com/leemm/last.fm.api.git",
-  "devDependencies": {
+    "string-format-js": "^0.1.8",
     "express": "^4.13.4"
-  }
+  },
+  "repository": "https://github.com/leemm/last.fm.api.git"
 }
