@@ -1,6 +1,6 @@
 'use strict';
 
-class Album {
+class Auth {
 
     constructor(opts, get, post) {
         this.opts = {};
@@ -11,49 +11,38 @@ class Album {
     }
 
     /**
-     * http://www.last.fm/api/show/album.getInfo
+     * http://www.last.fm/api/show/artist.getMobileSession
      * @return {Promise}
      */
-    getInfo(opts) {
+    getMobileSession(opts) {
         return this.get(this.opts, {
             filter: Object.assign(opts, {}),
-            method: 'album.getInfo'
+            method: 'auth.getMobileSession'
         });
     }
 
     /**
-     * http://www.last.fm/api/show/album.getTags
+     * http://www.last.fm/api/show/artist.getSession
      * @return {Promise}
      */
-    getTags(opts) {
+    getSession(opts) {
         return this.get(this.opts, {
             filter: Object.assign(opts, {}),
-            method: 'album.getTags'
+            method: 'auth.getSession'
         });
     }
 
     /**
-     * http://www.last.fm/api/show/album.getTopTags
+     * http://www.last.fm/api/show/artist.getToken
      * @return {Promise}
      */
-    getTopTags(opts) {
+    getToken(opts) {
         return this.get(this.opts, {
             filter: Object.assign(opts, {}),
-            method: 'album.getTopTags'
-        });
-    }
-
-    /**
-     * http://www.last.fm/api/show/album.search
-     * @return {Promise}
-     */
-    search(opts) {
-        return this.get(this.opts, {
-            filter: Object.assign(opts, {}),
-            method: 'album.search'
+            method: 'auth.getToken'
         });
     }
 
 }
 
-module.exports = Album;
+module.exports = Auth;
