@@ -1,7 +1,8 @@
 'use strict';
 
-const API = require('../api'),
-	api = new API({ apiKey: '2dff7465336a2724e04fe62619e752d4', debug: true });
+const key = require('./apikey.json'),
+	API = require('../api'),
+	api = new API(Object.assign(key, { debug: true }));
 
 // api.album.getInfo({
 // 	artist: 'nirvana',

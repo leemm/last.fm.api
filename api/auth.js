@@ -1,5 +1,7 @@
 'use strict';
 
+const md5 = require('js-md5');
+
 class Auth {
 
     constructor(opts, get, post) {
@@ -19,6 +21,26 @@ class Auth {
         returnUrl = returnUrl || 'http://localhost:8085/authenticated';
 
         return 'http://www.last.fm/api/auth/?api_key=' + this.opts.options.apiKey + '&cb=' + encodeURI(returnUrl);
+    }
+
+    /**
+     * Convenience method for getting last.fm signature for api calls that require it
+     * @param  {Object} opts (various options, can use username/password combination for mobile apps or token for web apps, see examples)
+     * @return {String}
+     */
+    signature(opts) {
+
+        let base = [ 'api_key', this.opts.options.apiKey, 'method', opts.method ];
+
+        if (opts.username && opts.password){
+            base = base.concat([ 'password', opts.password, 'username', opts.username ]);
+        }else if (opts.token){
+            base = base.concat([ 'token', opts.token ]);
+        }
+
+        base = base.concat([ 'secret', this.opts.options.apiSecret ]);
+
+        return md5(base.join(''));
     }
 
     /**

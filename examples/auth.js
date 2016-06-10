@@ -1,6 +1,6 @@
 'use strict';
 
-const key = { apiKey: '2dff7465336a2724e04fe62619e752d4' },
+const key = require('./apikey.json'),
 	API = require('../api'),
 	api = new API(key),
 	express = require('express'),
@@ -20,8 +20,29 @@ app.get('/', (req, res) => {
 app.get('/authenticated', (req, res) => {
 
 	// Last.fm sends the auth token back, it's valid for 60 minutes.
-	res.send(req.query);
-	process.exit();
+	let token = req.query.token;
+	if (token){
+
+		// TO DO : secret!
+
+		let signature = api.auth.signature({ method: 'auth.getSession', token: token });
+		console.log(signature);
+
+		// Get a session
+		// api.auth.getSession({
+		// 	token: token,
+		// 	api_sig: signature // required, MD5 hash based on token and api key
+		// })
+		// 	.then(json => { 
+		// 		console.log(json); 
+		// 		process.exit();
+		// 	})
+		// 	.catch(err => { 
+		// 		console.error('ERRORED!', JSON.stringify(err)); 
+		// 		process.exit();
+		// 	});
+
+	}
 
 });
 
