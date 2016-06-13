@@ -11,6 +11,17 @@ class Album {
     }
 
     /**
+     * http://www.last.fm/api/show/album.addTags
+     * @return {Promise}
+     */
+    addTags(opts) {
+        return this.post(this.opts, {
+            filter: Object.assign(opts, {}),
+            method: 'album.addTags'
+        });
+    }
+
+    /**
      * http://www.last.fm/api/show/album.getInfo
      * @return {Promise}
      */
@@ -40,7 +51,7 @@ class Album {
         return this.get(this.opts, {
             filter: Object.assign(opts, {}),
             method: 'album.getTopTags'
-        });
+        }, true);
     }
 
     /**

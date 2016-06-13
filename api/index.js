@@ -18,6 +18,7 @@ class API extends Request {
         this.url = 'http://ws.audioscrobbler.com/2.0/?%smethod=%s&api_key=%s&format=%s';
         this.defaults = {
             api_key: this.options.apiKey,
+            api_secret: this.options.apiSecret,
             format: 'json'
         };
 

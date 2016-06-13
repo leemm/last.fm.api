@@ -1,6 +1,7 @@
 'use strict';
 
-const md5 = require('js-md5');
+const md5 = require('md5'),
+    _ = require('lodash');
 
 class Auth {
 
@@ -9,7 +10,7 @@ class Auth {
         this.get = get;
         this.post = post;
 
-        Object.keys(opts).map(key => { this.opts[key] = opts[key];  });
+        Object.keys(opts).map(key => { this.opts[key] = opts[key]; });
     }
 
     /**
@@ -30,17 +31,26 @@ class Auth {
      */
     signature(opts) {
 
-        let base = [ 'api_key', this.opts.options.apiKey, 'method', opts.method ];
+        let base = [
+            { 'api_key': this.opts.options.apiKey },
+            { 'method': opts.method }
+        ];
 
         if (opts.username && opts.password){
-            base = base.concat([ 'password', opts.password, 'username', opts.username ]);
+            base = base.concat([ { 'password': opts.password }, { 'username': opts.username } ]);
         }else if (opts.token){
-            base = base.concat([ 'token', opts.token ]);
+            base = base.concat([ { 'token': opts.token } ]);
         }
 
-        base = base.concat([ 'secret', this.opts.options.apiSecret ]);
+        // "flatten" array of objecs
+        base = base.map(key => { return [ Object.keys(key)[0], key[Object.keys(key)[0]] ]; }).sort();
 
-        return md5(base.join(''));
+        // Absolutely ensure utf-8
+        let finalString = Buffer.from(_.flatten(base).join('') + this.opts.options.apiSecret).toString('utf8');
+
+        if (this.opts.options.debug && this.opts.options.debug === true){ console.log('signature', finalString.cyan); }
+
+        return md5(finalString);
     }
 
     /**
