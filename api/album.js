@@ -51,7 +51,7 @@ class Album {
         return this.get(this.opts, {
             filter: Object.assign(opts, {}),
             method: 'album.getTopTags'
-        }, true);
+        });
     }
 
     /**

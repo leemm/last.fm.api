@@ -23,41 +23,35 @@ app.get('/authenticated', (req, res) => {
 	let token = req.query.token;
 	if (token){
 
-		let signature = api.auth.signature({ method: 'auth.getSession', token: token });
-
-        console.log('md5 signature', signature);
-
 		// Get a session so we can make modifications
-		// api.auth.getSession({
-		// 	token: token,
-		// 	api_sig: signature // required, MD5 hash based on token and api key
-		// })
-		// 	.then(session => {
+		api.auth.getSession({
+			token: token
+		})
+		.then(session => {
 
-		// 		// Now that we have a session try to add some tags (a method that requires auth)
+			// Now that we have a session try to add some tags (a method that requires auth)
 
-		// 		return api.album.addTags({
-		// 			artist: 'Nirvana',
-		// 			album: 'Nevermind',
-		// 			tags: [
-		// 				'noise',
-		// 				'grunge',
-		// 				'punk',
-		// 				'metal'
-		// 			],
-		// 			api_sig: api.auth.signature({ method: 'album.addTags', token: token }),
-		// 			sk: session.session.key
-		// 		});
+			return api.album.addTags({
+				artist: 'Nirvana',
+				album: 'Nevermind',
+				tags: [
+					'noise',
+					'grunge',
+					'punk',
+					'metal'
+				],
+				sk: session.session.key
+			});
 
-		// 	})
-		// 	.then(json => {
-		// 		console.log(json);
-		// 		process.exit();
-		// 	})
-		// 	.catch(err => {
-		// 		console.error('ERRORED!', JSON.stringify(err));
-		// 		process.exit();
-		// 	});
+		})
+		.then(json => {
+			console.log(json);
+			process.exit();
+		})
+		.catch(err => {
+			console.error('ERRORED!', JSON.stringify(err));
+			process.exit();
+		});
 
 	}
 
