@@ -3,9 +3,7 @@
   "version": "0.1.1",
   "description": "last.fm.api with Promises and ES6 style classes",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [
     "last",
     "fm",
