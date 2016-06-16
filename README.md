@@ -19,7 +19,7 @@ npm install last.fm.api --save
 # Usage
 
 All API methods listed in the developer documentation http://www.last.fm/api are mapped to the API class. e.g. **api.album.getTags()** for the API method *album.getTags*.
-** You do not need to supply *api_sig* and *api_key* to the methods, these will be generated automatically.  You must supply *sk* (session key) for methods that require it. ** 
+**You do not need to supply *api_sig* and *api_key* to the methods, these will be generated automatically.  You must supply *sk* (session key) for methods that require it.** 
 
 ```javascript
 'use strict';
@@ -36,7 +36,7 @@ const API = require('last.fm.api'),
 new API(options);
 * **apiKey** *String* - Your API key
 * **apiSecret** *String* - Your API secret
-* **debug** *Boolean* - If true the URL, Querystring and Form body is written to the console. (default ```false```)
+* **debug** *Boolean* - If true the URL and Querystring/Form Body are written to the console. (default ```false```)
 * **username** *String* - Your Last.FM username, required when using authentication for Mobile apps (optional)
 * **password** *String* - Your Last.FM password, required when using authentication for Mobile apps (optional)
 
