@@ -90,8 +90,7 @@ To get a session key for mobile apps
 ```javascript
 'use strict';
 
-const key = require('./apikey.json'),
-    API = require('last.fm.api'),
+const API = require('last.fm.api'),
     api = new API({ 
         apiKey: '<YOUR API KEY>', 
         apiSecret: '<YOUR API SECRET>',

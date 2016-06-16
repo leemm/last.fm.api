@@ -1,6 +1,6 @@
 {
   "name": "last.fm.api",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "last.fm.api with Promises and ES6 style classes",
   "main": "index.js",
   "scripts": {},
