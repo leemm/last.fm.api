@@ -60,6 +60,3 @@ app.get('/authenticated', (req, res) => {
 console.log('express running on port ' + port);
 app.listen(port);
 
-// api.auth.getToken({ username: 'kurt', password: 'cobain' })
-// 	.then(json => { console.log(json); })
-// 	.catch(err => { console.error(err); });

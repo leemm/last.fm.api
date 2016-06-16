@@ -15,10 +15,12 @@ class API extends Request {
         super();
 
         this.options = opts || {};
-        this.url = 'http://ws.audioscrobbler.com/2.0/?%smethod=%s&api_key=%s&format=%s';
+        this.url = 'https://ws.audioscrobbler.com/2.0/?%smethod=%s&api_key=%s&format=%s';
         this.defaults = {
             api_key: this.options.apiKey,
             api_secret: this.options.apiSecret,
+            username: this.options.username,
+            password: this.options.password,
             format: 'json'
         };
 

@@ -1,6 +1,6 @@
 {
   "name": "last.fm.api",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "last.fm.api with Promises and ES6 style classes",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "colors": "^1.1.2",
+    "html-parse-stringify2": "^1.1.0",
     "lodash": "^4.13.1",
     "md5": "^2.1.0",
     "pixl-xml": "^1.0.7",

@@ -55,6 +55,17 @@ class Album {
     }
 
     /**
+     * http://www.last.fm/api/show/album.removeTag
+     * @return {Promise}
+     */
+    removeTag(opts) {
+        return this.post(this.opts, {
+            filter: Object.assign(opts, {}),
+            method: 'album.removeTag'
+        });
+    }
+
+    /**
      * http://www.last.fm/api/show/album.search
      * @return {Promise}
      */
