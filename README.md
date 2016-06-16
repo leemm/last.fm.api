@@ -91,12 +91,14 @@ To get a session key for mobile apps
 'use strict';
 
 const key = require('./apikey.json'),
-    API = require('../api'),
-    api = new API(Object.assign(key, { 
+    API = require('last.fm.api'),
+    api = new API({ 
+        apiKey: '<YOUR API KEY>', 
+        apiSecret: '<YOUR API SECRET>',
         debug: true,
         username: '<YOUR USERNAME>',
         password: '<YOUR PASSWORD>'
-    }));
+    });
 
 // Get Mobile Session by supplying username and password into API constructor
 api.auth.getMobileSession({})
