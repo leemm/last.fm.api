@@ -1,9 +1,15 @@
 'use strict';
 
 const Request = require('../lib/request'),
-    fs = require('fs'),
     _ = require('lodash'),
-    path = require('path');
+    Album = require('./album'),
+    Artist = require('./artist'),
+    Auth = require('./auth'),
+    Chart = require('./chart'),
+    Library = require('./library'),
+    Tag = require('./tag'),
+    Track = require('./track'),
+    User = require('./user');
 
 class API extends Request {
 
@@ -24,14 +30,14 @@ class API extends Request {
             format: 'json'
         };
 
-        let files = _.filter(fs.readdirSync(__dirname), file => { return path.parse(file).ext === '.js' && file !== 'index.js'; });
-        files.map(file => {
-
-            let info = path.parse(file);
-
-            this[info.name] = new (require('./' + file))(this, super.get, super.post);
-
-        });
+        this.album = new Album(this, super.get, super.post);
+        this.artist = new Artist(this, super.get, super.post);
+        this.auth = new Auth(this, super.get, super.post);
+        this.chart = new Chart(this, super.get, super.post);
+        this.library = new Library(this, super.get, super.post);
+        this.tag = new Tag(this, super.get, super.post);
+        this.track = new Track(this, super.get, super.post);
+        this.user = new User(this, super.get, super.post);
     }
 
 }
